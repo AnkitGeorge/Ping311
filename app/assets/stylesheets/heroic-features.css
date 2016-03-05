@@ -15,3 +15,7 @@
 footer {
     margin: 50px 0;
 }
+
+ul {
+  list-style-type: none;
+}

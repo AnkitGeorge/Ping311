@@ -8,6 +8,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'sorcery'
 group :development, :test do
   gem 'byebug'
 end

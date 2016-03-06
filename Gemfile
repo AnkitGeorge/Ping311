@@ -6,9 +6,15 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
+#Carrier Wave for image uploads
 gem 'carrierwave'
+# Mini Magick for processing images
 gem 'mini_magick'
+# Sorcery for authentication
 gem 'sorcery'
+# Acts as Votable for votes
+gem 'acts_as_votable'
+
 group :development, :test do
   gem 'byebug'
 end

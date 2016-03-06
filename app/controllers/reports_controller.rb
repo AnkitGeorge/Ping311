@@ -1,4 +1,5 @@
 class ReportsController < ApplicationController
+  before_action :show, only [:upvote, :destroy]
   def new
     @report = Report.new
   end
@@ -28,6 +29,12 @@ class ReportsController < ApplicationController
     @report = Report.find(report_params[:id])
     @report.destroy
       redirect_to reports_path
+  end
+
+  # upvote_from user
+  def upvote
+    @movie.upvote_from current_user
+    redirect_to movies_path
   end
 
 private

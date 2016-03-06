@@ -1,3 +1,8 @@
 <h2><%= @report.address %></h2>
 <h2><%= @report.description %></h2>
 <h4>Status: <%= statusName(@report.status) %></h4>
+
+<%= form_for @report.upvotes.build, remote: true do |f| %>
+  <%= f.hidden_field :user, value: current_user %>
+  <%= f.submit 'Upvote', class: 'upvote-submit' %>
+<% end %>

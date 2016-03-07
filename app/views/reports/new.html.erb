@@ -19,15 +19,5 @@
     <%= f.submit %>
   </div>
 
-<h4>Reports near this location</h4>
-  <ol>
-    <li>
-      <% @nearbyholes.each do |h| %>
-      <p><%= r.location %></p>
-      <p><%= r.address %></p>
-      <p><%= r.status %></p>
-      <p><%= r.distance_to(@report) %></p>
-    </li>
-  </ol>
 
 <% end %>

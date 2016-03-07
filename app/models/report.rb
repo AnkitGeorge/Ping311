@@ -6,4 +6,5 @@ mount_uploader :image, ImageUploader
 acts_as_votable
 #Point to which column in the db will provide the address to be converted to the GPS coordinates.
 geocoded_by :address
+after_validation :geocode 
 end

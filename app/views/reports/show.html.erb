@@ -8,6 +8,17 @@
   </button>
 <% end %>
 
+<h4>Reports near this location</h4>
+  <ol>
+    <li>
+      <% @nearbyholes.each do |h| %>
+      <p><%= h.address %></p>
+      <p><%= h.status %></p>
+      <p><%= h.distance_to(@report) %></p>
+      <% end %>
+    </li>
+  </ol>
+
   <% if @report.comments.any? %>
   <h3>Comments</h3>
    <% @report.comments.each do |comment| %>

@@ -21,7 +21,6 @@ class ReportsController < ApplicationController
 
   def index
     @reports = Report.all.order(:cached_votes_up => :desc)
-    @nearbyholes = @report.nearbys
   end
 
   def show

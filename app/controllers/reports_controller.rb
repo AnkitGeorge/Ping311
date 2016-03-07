@@ -20,11 +20,13 @@ class ReportsController < ApplicationController
 
   def index
     @reports = Report.all.order(:cached_votes_up => :desc)
+    @nearbyholes = @report.nearbys
   end
 
   def show
     @report = Report.find(params[:id])
     @comment = Comment.new(user: current_user, report: @report)
+    @nearbyholes = @report.nearbys
   end
 
   def destroy

@@ -14,7 +14,8 @@ gem 'mini_magick'
 gem 'sorcery'
 # Acts as Votable for votes
 gem 'acts_as_votable'
-
+# Geocoder for geolocation
+gem 'geocoder'
 group :development, :test do
   gem 'byebug'
 end

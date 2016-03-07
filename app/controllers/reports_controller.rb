@@ -3,6 +3,7 @@ class ReportsController < ApplicationController
 
   def new
     @report = Report.new
+    @nearbyholes = @report.nearbys
   end
 
   def create

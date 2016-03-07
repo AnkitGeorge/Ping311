@@ -26,7 +26,7 @@ class ReportsController < ApplicationController
   def show
     @report = Report.find(params[:id])
     @comment = Comment.new(user: current_user, report: @report)
-    @nearbyholes = @report.nearbys
+    @nearbyholes = @report.nearbys( 1, units: :km)
   end
 
   def destroy

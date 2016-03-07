@@ -14,7 +14,7 @@
       <% @nearbyholes.each do |h| %>
       <p><%= h.address %></p>
       <p><%= h.status %></p>
-      <p><%= h.distance_to(@report) %></p>
+      <p><%= h.distance_to(@report, :km) %></p>
       <% end %>
     </li>
   </ol>

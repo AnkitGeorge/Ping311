@@ -20,13 +20,18 @@ class ReportsController < ApplicationController
   end
 
   def index
-    @reports = Report.all.order(:cached_votes_up => :desc)
+    if params[:latitude] && params[:longitude]
+      @reports = Report.near([params[:latitude], params[:longitude]], 1, unit: :km)
+    else
+      @reports = Report.all.order(:cached_votes_up => :desc)
+    end
+
   end
 
   def show
     @report = Report.find(params[:id])
     @comment = Comment.new(user: current_user, report: @report)
-    @nearbyholes = @report.nearbys( 1, units: :km)
+    @nearbyholes = @report.nearbys( 1, unit: :km)
   end
 
   def destroy

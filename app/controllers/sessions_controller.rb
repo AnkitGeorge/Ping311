@@ -17,4 +17,5 @@ class SessionsController < ApplicationController
       redirect_to reports_path, notice: 'Logged out!'
     end
 
+
 end

@@ -5,4 +5,11 @@
     <h4><li>Status: <%= statusName(report.status) %></li></h4>
     <br>
     <br>
+
+    <%= link_to like_report_path(report), class: "like", method: :put do %>
+      <button type="button">
+        <span class="badge"><%= report.get_upvotes.size %></span>
+      </button>
+    <% end %>
+
 </ul>

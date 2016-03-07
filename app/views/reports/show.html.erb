@@ -2,7 +2,19 @@
 <h2><%= @report.description %></h2>
 <h4>Status: <%= statusName(@report.status) %></h4>
 
-<%= form_for @report.upvotes.build, remote: true do |f| %>
-  <%= f.hidden_field :user, value: current_user %>
-  <%= f.submit 'Upvote', class: 'upvote-submit' %>
+<%= link_to like_report_path(@report), class: "like", method: :put do %>
+  <button type="button">
+    <span class="badge"><%= @report.get_upvotes.size %></span>
+  </button>
 <% end %>
+
+  <% if @report.comments.any? %>
+  <h3>Comments</h3>
+   <% @report.comments.each do |comment| %>
+      <p> <%= comment.user.username %> says: <%= comment.body_text %> </p>
+     <% end %>
+   <% else %>
+     <p> No Comments Posted</p>
+ <%end %>
+
+ <%= render partial: 'comments/form' %>

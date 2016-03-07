@@ -1,0 +1,9 @@
+<% if current_user %>
+ <%= form_for [@report, @comment] do |f| %>
+   <div>
+     <p><%= f.label :comment, "Post a comment" %></p>
+     <p><%= f.text_area :body_text %></p>
+   </div>
+   <%= f.submit 'Post Comment!' %>
+ <% end  %>
+<% end %>

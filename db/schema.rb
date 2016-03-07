@@ -11,19 +11,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160306223700) do
+ActiveRecord::Schema.define(version: 20160307005810) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "body_text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.integer  "report_id"
+  end
 
   create_table "reports", force: :cascade do |t|
     t.string   "address"
     t.text     "description"
     t.integer  "status"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.string   "image"
+    t.integer  "cached_votes_total",      default: 0
+    t.integer  "cached_votes_score",      default: 0
+    t.integer  "cached_votes_up",         default: 0
+    t.integer  "cached_weighted_score",   default: 0
+    t.integer  "cached_weighted_total",   default: 0
+    t.float    "cached_weighted_average", default: 0.0
   end
+
+  add_index "reports", ["cached_votes_score"], name: "index_reports_on_cached_votes_score", using: :btree
+  add_index "reports", ["cached_votes_total"], name: "index_reports_on_cached_votes_total", using: :btree
+  add_index "reports", ["cached_votes_up"], name: "index_reports_on_cached_votes_up", using: :btree
+  add_index "reports", ["cached_weighted_average"], name: "index_reports_on_cached_weighted_average", using: :btree
+  add_index "reports", ["cached_weighted_score"], name: "index_reports_on_cached_weighted_score", using: :btree
+  add_index "reports", ["cached_weighted_total"], name: "index_reports_on_cached_weighted_total", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",            null: false

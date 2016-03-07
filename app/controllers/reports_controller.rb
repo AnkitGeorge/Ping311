@@ -1,5 +1,6 @@
 class ReportsController < ApplicationController
-  before_action :show, only [:upvote, :destroy]
+  before_action :show, only: [:upvote, :destroy]
+
   def new
     @report = Report.new
   end
@@ -18,11 +19,12 @@ class ReportsController < ApplicationController
   end
 
   def index
-    @reports = Report.all
+    @reports = Report.all.order(:cached_votes_up => :desc)
   end
 
   def show
     @report = Report.find(params[:id])
+    @comment = Comment.new(user: current_user, report: @report)
   end
 
   def destroy
@@ -33,13 +35,12 @@ class ReportsController < ApplicationController
 
   # upvote_from user
   def upvote
-    @movie.upvote_from current_user
-    redirect_to movies_path
+    @report.upvote_from current_user
+    redirect_to reports_path
   end
 
 private
-def report_params
-  params.require(:report).permit(:id, :description, :address, :status, :image)
-end
-
+  def report_params
+    params.require(:report).permit(:id, :description, :address, :status, :image)
+  end
 end

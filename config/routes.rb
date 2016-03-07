@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   root :to => 'reports#index'
   # Voting routes
   resources :reports do
+    resources :comments, only: [:show, :create, :destroy]
     member do
-      put "like" => "movies#upvote"
+      put "like" => "reports#upvote"
     end
   end
   # Restful routes

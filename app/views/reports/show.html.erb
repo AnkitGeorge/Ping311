@@ -30,3 +30,7 @@
  <%end %>
 
  <%= render partial: 'comments/form' %>
+
+ <%= javascript_tag do %>
+ window.nearbys = <%= raw @nearbyholes.map{|nr| { lat: nr.latitude, lng: nr.longitude } }.to_json %>
+<% end %>

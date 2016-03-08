@@ -8,8 +8,5 @@ acts_as_votable
 geocoded_by :address
 after_validation :geocode, if: :address_changed?
 
-def sort_by_votes
-  @reports = Report.all.order(:cached_votes_up => :desc)
-end
 
 end

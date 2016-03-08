@@ -6,6 +6,7 @@
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Pothole Report" %>">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['google_maps_api_key']}&callback=initMap" %>
     <%= csrf_meta_tags %>
   </head>
   <body>

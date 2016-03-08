@@ -23,7 +23,7 @@ class ReportsController < ApplicationController
     if params[:latitude] && params[:longitude]
       @reports = Report.near([params[:latitude], params[:longitude]], 1, unit: :km)
     elsif params[:votes]
-      @reports = Report.all.order(:cached_votes_up => :asc)
+      @reports = Report.all.order(:cached_votes_up => :desc)
     elsif params[:status]
       @reports = Report.all.order(:status => :asc)
     else

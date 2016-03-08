@@ -1,7 +1,3 @@
-$(document).on('ready page:load', function(){
-});
-
-
 function initMap() {
   var mapPlaceholder = $('#map');
 

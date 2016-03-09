@@ -14,14 +14,14 @@ $(document).on('ready page:load', function() {
    title: 'Current_pothole'
  });
 
- if (window.nearbys) {
-   nearbys.forEach(function(coord) {
-     new google.maps.Marker({
-       position: { lat: parseFloat(coord.lat), lng: parseFloat(coord.lng) },
-       map: map,
-       title: "Nearby_potholes",
-       icon: customIcon
-     });
-   });
- }
+  if (window.nearbys) {
+    nearbys.forEach(function(coord) {
+      new google.maps.Marker({
+        position: { lat: parseFloat(coord.lat), lng: parseFloat(coord.lng) },
+        map: map,
+        title: "Nearby_potholes",
+        icon: customIcon
+      });
+    });
+  }
 });

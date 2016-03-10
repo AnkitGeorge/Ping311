@@ -1,6 +1,6 @@
 <div id="map" data-latitude="<%= @report.latitude %>" data-longitude="<%= @report.longitude %>"></div>
 <h2><%= @report.address %></h2>
-<h2><%= @report.description %></h2>
+<h4><%= @report.description %></h4>
 <h4>Status: <%= statusName(@report.status) %></h4>
 
 <%= link_to like_report_path(@report), class: "like", method: :put do %>
@@ -9,15 +9,15 @@
   </button>
 <% end %>
 
-<h4>Reports near this location</h4>
+<h4>Other pothole reports near this location</h4>
   <ol>
-    <li>
       <% @nearbyholes.each do |h| %>
-      <p><%= h.address %></p>
-      <p><%= h.status %></p>
-      <p><%= h.distance_to(@report, :km) %></p>
+        <li>
+          <p><%= h.address %></p>
+          <p>Status: <%= statusName(h.status) %></p>
+          <p><%= (h.distance_to(@report, :km)*1000).to_i %> metres away.</p>
+        </li>
       <% end %>
-    </li>
   </ol>
 
   <% if @report.comments.any? %>

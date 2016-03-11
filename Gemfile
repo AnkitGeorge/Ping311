@@ -37,8 +37,8 @@ group :development, :test do
   gem 'pry-rescue'
 end
 group :production do
-  gem 'puma'
   gem 'rails_12factor'
+  gem 'puma'
 end
 
 gem 'figaro'

@@ -1,4 +1,9 @@
 Rails.application.configure do
+  class ActionDispatch::Request
+    def ip
+      "216.52.207.74"
+    end
+end
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on

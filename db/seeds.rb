@@ -8,12 +8,12 @@
 
 Report.create!(
   :address  => "220 King Street West, Toronto",
-  :description => "Right beside Bitmaker Labs.",
+  :description => "",
   :status    => 1
 )
 
 Report.create!(
-  :address  => "240 King Street West, Toronto",
+  :address  => "300 King Street West, Toronto",
   :description => "King Street is a mess today",
   :status    => 1
 )

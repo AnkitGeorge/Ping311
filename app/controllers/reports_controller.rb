@@ -1,5 +1,5 @@
 class ReportsController < ApplicationController
-  before_action :show, only: [:upvote, :destroy]
+  before_action :show, only: [:vote, :destroy]
 
   def new
     @report = Report.new
@@ -12,6 +12,7 @@ class ReportsController < ApplicationController
     #@report.status = @status
     #@status = 1
     @report.status = 1
+    @report.vote_count = 0
     if @report.save
       redirect_to report_path(@report)
     else
@@ -22,8 +23,8 @@ class ReportsController < ApplicationController
   def index
     if params[:latitude] && params[:longitude]
       @reports = Report.near([params[:latitude], params[:longitude]], 1, unit: :km)
-    elsif params[:votes]
-      @reports = Report.all.order(:cached_votes_up => :desc)
+    elsif params[:vote_count]
+      @reports = Report.all.order(@report.vote_count=> :desc)
     elsif params[:status]
       @reports = Report.all.order(:status => :asc)
     else

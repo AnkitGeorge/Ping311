@@ -12,7 +12,7 @@ $(document).on("ready page:load", function(){
     $.ajax({
       url: '/reports',
       method: 'get',
-      data: {votes: true},
+      data: {vote_count: true},
       dataType: 'script',
     })
 

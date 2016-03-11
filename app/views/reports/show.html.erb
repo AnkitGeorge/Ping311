@@ -21,11 +21,12 @@
   <% end %>
 
   <h2>Votes</h2>
-    <% if @report.votes.any? %>
-      <%= @report.votes.count %>
-    <% else  %>
-      <p> No one has voted yet</p>
-    <% end  %>
+  <% if @report.votes.any? %>
+    <% @report.vote_count = @report.votes.count %>
+  <% else %>
+    <% @report.vote_count = 0 %>
+  <% end %>
+    <p> Votes so far: <%= @report.vote_count %></p>
 
 
 

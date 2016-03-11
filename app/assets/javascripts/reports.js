@@ -34,7 +34,7 @@ $(document).on("ready page:load", function(){
 
 
  // Sort by location
- 
+
 function success(position){
   var lat = position.coords.latitude;  //this info comes from the if statement above
   var lon = position.coords.longitude;

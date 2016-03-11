@@ -1,18 +1,19 @@
 <div id="map" data-latitude="<%= @report.latitude %>" data-longitude="<%= @report.longitude %>"></div>
 <h2><%= @report.address %></h2>
+<br>
 <h4><%= @report.description %></h4>
+<br>
 <h4>Status: <%= statusName(@report.status) %></h4>
-
+<br>
 <h4>Other pothole reports near this location</h4>
-  <ol>
       <% @nearbyholes.each do |h| %>
         <li>
           <p><%= h.address %></p>
-          <p>Status: <%= statusName(h.status) %></p>
-          <p><%= (h.distance_to(@report, :km)*1000).to_i %> metres away.</p>
+          <p>&nbsp;&nbsp;&nbsp;Status: <%= statusName(h.status) %></p>
+          <p>&nbsp;&nbsp;&nbsp;<%= (h.distance_to(@report, :km)*1000).to_i %> metres away.</p>
         </li>
+        <br>
       <% end %>
-  </ol>
 
   <%= form_for @vote do |f| %>
     <%= f.hidden_field :report_id %>

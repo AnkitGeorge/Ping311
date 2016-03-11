@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :comments
+resources :reports
+resources :users
+resources :votes
+
+    root to: "comments#index"
+  end
+
   # Home directory
   root :to => 'reports#index'
   resources :votes, only: [:index, :show, :create, :update, :destroy]

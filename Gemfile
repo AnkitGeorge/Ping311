@@ -13,7 +13,7 @@ gem 'mini_magick'
 # Sorcery for authentication
 gem 'sorcery'
 # Acts as Votable for votes
-gem 'acts_as_votable'
+#gem 'acts_as_votable'
 # Geocoder for geolocation
 gem 'geocoder'
 group :development, :test do

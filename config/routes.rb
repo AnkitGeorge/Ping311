@@ -1,12 +1,10 @@
 Rails.application.routes.draw do
   # Home directory
   root :to => 'reports#index'
+  resources :votes, only: [:index, :show, :create, :update, :destroy]
   # Voting routes
   resources :reports do
     resources :comments, only: [:show, :create, :destroy]
-    member do
-      put "like" => "reports#upvote"
-    end
   end
   # Restful routes
   resources :sessions

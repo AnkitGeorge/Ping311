@@ -35,6 +35,7 @@ class ReportsController < ApplicationController
   def show
     @report = Report.find(params[:id])
     @comment = Comment.new(user: current_user, report: @report)
+    @vote = @report.votes.build
     @nearbyholes = @report.nearbys( 1, unit: :km)
   end
 
@@ -44,11 +45,7 @@ class ReportsController < ApplicationController
       redirect_to reports_path
   end
 
-  # upvote_from user
-  def upvote
-    @report.upvote_from current_user
-    redirect_to reports_path
-  end
+  # upvote_from user?
 
 private
   def report_params

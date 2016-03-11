@@ -3,12 +3,6 @@
 <h4><%= @report.description %></h4>
 <h4>Status: <%= statusName(@report.status) %></h4>
 
-<%= link_to like_report_path(@report), class: "like", method: :put do %>
-  <button type="button">
-    <span class="badge"><%= @report.get_upvotes.size %></span>
-  </button>
-<% end %>
-
 <h4>Other pothole reports near this location</h4>
   <ol>
       <% @nearbyholes.each do |h| %>
@@ -19,6 +13,20 @@
         </li>
       <% end %>
   </ol>
+
+  <%= form_for @vote do |f| %>
+    <%= f.hidden_field :report_id %>
+    <%= f.submit "Submit Vote" %>
+  <% end %>
+
+  <h2>Votes</h2>
+    <% if @report.votes.any? %>
+      <%= @report.votes.count %>
+    <% else  %>
+      <p> No one has voted yet</p>
+    <% end  %>
+
+
 
   <% if @report.comments.any? %>
   <h3>Comments</h3>

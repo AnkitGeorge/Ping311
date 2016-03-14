@@ -72,7 +72,7 @@ class ReportDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how reports are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(report)
-  #   "Report ##{report.id}"
-  # end
+  def display_resource(report)
+    "#{report.address}"
+  end
 end

@@ -30,7 +30,6 @@ class ReportsController < ApplicationController
     else
       @reports = Report.all
     end
-
   end
 
   def show

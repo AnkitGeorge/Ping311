@@ -1,8 +1,17 @@
 <ul>
-    <h4><li><%= link_to image_tag(report.image), report_path(report) %></li></h4>
+    <h4><li><%= link_to image_tag(report.image), report_path(report), :class => "index_img"%></li></h4>
     <h4><li>Address: <%= link_to "#{report.address}", report_path(report) %></h4></p>
     <p><li>Description: <%= report.description  %></li></p>
     <p><li>Status: <%= statusName(report.status) %></li></p>
     <br>
+    <br>
+    <br>
+    <h4>Votes</h4>
+    <% if report.votes.any? %>
+    <% report.vote_count = report.votes.count %>
+    <% else %>
+    <% report.vote_count = 0 %>
+    <% end %>
+    <p> Votes so far: <%= report.vote_count %></p>
     <br>
 </ul>

@@ -1,5 +1,7 @@
 <div id="map" data-latitude="<%= @report.latitude %>" data-longitude="<%= @report.longitude %>"></div>
-<%= link_to image_tag(@report.image), report_path(@report) %>
+<br>
+<br>
+<div id="show_img"><%= image_tag(@report.image) %></div>
 <h2><%= @report.address %></h2>
 <br>
 <h4><%= @report.description %></h4>
@@ -15,12 +17,12 @@
         </li>
         <br>
       <% end %>
-
+  <!-- Button to vote -->
   <%= form_for @vote do |f| %>
     <%= f.hidden_field :report_id %>
     <%= f.submit "Submit Vote" %>
   <% end %>
-
+  <!-- Votes -->
   <h2>Votes</h2>
   <% if @report.votes.any? %>
     <% @report.vote_count = @report.votes.count %>
@@ -29,7 +31,7 @@
   <% end %>
     <p> Votes so far: <%= @report.vote_count %></p>
 
-
+  <!-- Comments -->
 
   <% if @report.comments.any? %>
   <h3>Comments</h3>

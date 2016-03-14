@@ -9,7 +9,11 @@ module Admin
     before_filter :authenticate_admin
 
     def authenticate_admin
+      authenticate_or_request_with_http_basic do |username, password|
+        #username == "foo1" && password == "bar2"
+        username == "#{ENV['adminusername']}" && password == "#{ENV['adminpassword']}"
       # TODO Add authentication logic here.
+      end
     end
 
     # Override this value to specify the number of elements to display at a time

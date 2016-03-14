@@ -39,6 +39,20 @@ class ReportsController < ApplicationController
     @nearbyholes = @report.nearbys( 1, unit: :km)
   end
 
+  def edit
+    @report = Report.find(params[:id])
+  end
+
+  def update
+    @report = Report.find(params[:id])
+
+    if @report.update_attributes(report_params)
+      redirect_to "/reports/#{@report.id}"
+    else
+      render :edit
+    end
+  end
+
   def destroy
     @report = Report.find(report_params[:id])
     @report.destroy

@@ -15,9 +15,10 @@ class VotesController < ApplicationController
     @vote.user = current_user
 
     if @vote.save
-      redirect_to report_path(@vote.report), notice: 'Vote added, thank you! :simple_smile:.'
+      redirect_to report_path(@vote.report), notice: 'Vote added, thank you!'
     else
-      redirect_to report_path(@vote.report), notice: 'The vote did not save.'
+      redirect_to report_path(@vote.report),
+      notice: 'The vote did not save. Make sure you did not vote already.'
     end
 
   end

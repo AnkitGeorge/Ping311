@@ -18,7 +18,7 @@ class ReportDashboard < Administrate::BaseDashboard
     status: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    image: Field::String,
+    image: Field::Image,
     latitude: Field::Number.with_options(decimals: 2),
     longitude: Field::Number.with_options(decimals: 2),
   }
@@ -38,19 +38,17 @@ class ReportDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :comments,
-    :commenting_users,
-    :votes,
-    :voting_users,
+    :image,
     :id,
     :address,
     :description,
     :status,
-    :created_at,
-    :updated_at,
-    :image,
     :latitude,
     :longitude,
+    :created_at,
+    :updated_at,
+    :comments,
+    :votes,
   ]
 
   # FORM_ATTRIBUTES
@@ -58,9 +56,7 @@ class ReportDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :comments,
-    :commenting_users,
     :votes,
-    :voting_users,
     :address,
     :description,
     :status,

@@ -30,36 +30,30 @@ class UserDashboard < Administrate::BaseDashboard
     :email,
     :comments,
     :votes,
-    :voted_reports,
     :id,
   ]
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :comments,
-    :votes,
-    :voted_reports,
     :id,
     :email,
-    :crypted_password,
-    :salt,
     :created_at,
     :updated_at,
     :username,
+    :comments,
+    :votes,
   ]
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
+    :email,
+    :username,
     :comments,
     :votes,
     :voted_reports,
-    :email,
-    :crypted_password,
-    :salt,
-    :username,
   ]
 
   # Overwrite this method to customize how users are displayed

@@ -22,6 +22,16 @@
    <%= f.hidden_field :report_id %>
    <%= f.submit "Subscribe" %>
  <% end %>
+
+ <h2>Subscriptions</h2>
+ <% if @report.subscriptions.any? %>
+   <% @report.subscription_count = @report.subscriptions.count %>
+ <% else %>
+   <% @report.subscription_count = 0 %>
+ <% end %>
+   <p> Subscriptions so far: <%= @report.subscription_count %></p>
+
+
   <!-- Button to vote -->
   <%= form_for @vote do |f| %>
     <%= f.hidden_field :report_id %>

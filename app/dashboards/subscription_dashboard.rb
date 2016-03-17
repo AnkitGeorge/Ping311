@@ -8,8 +8,8 @@ class SubscriptionDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    user: Field::BelongsTo,
     report: Field::BelongsTo,
+    user: Field::BelongsTo,
     id: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -21,8 +21,8 @@ class SubscriptionDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :user,
     :report,
+    :user,
     :id,
     :created_at,
   ]
@@ -30,9 +30,9 @@ class SubscriptionDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :user,
-    :report,
     :id,
+    :report,
+    :user,
     :created_at,
     :updated_at,
   ]
@@ -41,8 +41,8 @@ class SubscriptionDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :user,
     :report,
+    :user,
   ]
 
   # Overwrite this method to customize how subscriptions are displayed

@@ -12,7 +12,7 @@ class SubscriptionsController < ApplicationController
 
   def create
     @subscription = Subscription.new(subscription_params)
-    @user = current_user
+    @subscription.user = current_user
 
     if @subscription.save
       redirect_to report_path(@subscription.report), notice: 'Subscription added, thank you!'

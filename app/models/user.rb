@@ -4,6 +4,9 @@ class User < ActiveRecord::Base
   has_many :votes
   has_many :voted_reports, through: :votes, :source => :report
 
+  has_many :subscriptions
+  has_many :subscribed_reports, through: :subscriptions, :source => :report
+
   # Act as voter is an association supplied by act_as_votable gem to be applied on?
   # whoever can vote.?
   # Validations through sorcery. Not sure about code within {}

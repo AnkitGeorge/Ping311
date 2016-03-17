@@ -12,15 +12,18 @@ class ReportDashboard < Administrate::BaseDashboard
     commenting_users: Field::HasMany.with_options(class_name: "User"),
     votes: Field::HasMany,
     voting_users: Field::HasMany.with_options(class_name: "User"),
+    subscriptions: Field::HasMany,
+    subscribing_users: Field::HasMany.with_options(class_name: "User"),
     id: Field::Number,
     address: Field::String,
     description: Field::Text,
     status: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    image: Field::Image,
+    image: Field::String,
     latitude: Field::Number.with_options(decimals: 2),
     longitude: Field::Number.with_options(decimals: 2),
+    vote_count: Field::Number,
   }
 
   # COLLECTION_ATTRIBUTES
@@ -29,26 +32,31 @@ class ReportDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :address,
-    :description,
     :comments,
+    :commenting_users,
     :votes,
+    :voting_users,
   ]
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :image,
+    :comments,
+    :commenting_users,
+    :votes,
+    :voting_users,
+    :subscriptions,
+    :subscribing_users,
     :id,
     :address,
     :description,
     :status,
-    :latitude,
-    :longitude,
     :created_at,
     :updated_at,
-    :comments,
-    :votes,
+    :image,
+    :latitude,
+    :longitude,
+    :vote_count,
   ]
 
   # FORM_ATTRIBUTES
@@ -56,19 +64,24 @@ class ReportDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :comments,
+    :commenting_users,
     :votes,
+    :voting_users,
+    :subscriptions,
+    :subscribing_users,
     :address,
     :description,
     :status,
     :image,
     :latitude,
     :longitude,
+    :vote_count,
   ]
 
   # Overwrite this method to customize how reports are displayed
   # across all pages of the admin dashboard.
   #
-  def display_resource(report)
-    "#{report.address}"
-  end
+  # def display_resource(report)
+  #   "Report ##{report.id}"
+  # end
 end

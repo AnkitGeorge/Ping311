@@ -23,15 +23,6 @@ class VotesController < ApplicationController
 
   end
 
-  #def load_report
-    #     @report = Project.find(params[:report_id])
-    #   end
-
-    #   def load_vote
-    #     @vote = Vote.find(params[:id])
-    #   end
-  # end
-
   private
   def vote_params
     params.require(:vote).permit(:user_id, :report_id)

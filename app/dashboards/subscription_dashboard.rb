@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class VoteDashboard < Administrate::BaseDashboard
+class SubscriptionDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -8,8 +8,8 @@ class VoteDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    report: Field::BelongsTo,
     user: Field::BelongsTo,
+    report: Field::BelongsTo,
     id: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -21,8 +21,8 @@ class VoteDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :report,
     :user,
+    :report,
     :id,
     :created_at,
   ]
@@ -30,8 +30,8 @@ class VoteDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :report,
     :user,
+    :report,
     :id,
     :created_at,
     :updated_at,
@@ -41,14 +41,14 @@ class VoteDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :report,
     :user,
+    :report,
   ]
 
-  # Overwrite this method to customize how votes are displayed
+  # Overwrite this method to customize how subscriptions are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(vote)
-  #   "Vote ##{vote.id}"
+  # def display_resource(subscription)
+  #   "Subscription ##{subscription.id}"
   # end
 end

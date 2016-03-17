@@ -4,12 +4,14 @@ namespace :admin do
   resources :reports
   resources :users
   resources :votes
+  resources :subscriptions
   root to: "reports#index"
   end
   # Home directory
   root :to => 'reports#index'
-  resources :votes, only: [:index, :show, :create, :update, :destroy]
-  # Voting routes
+  # Report routes
+  resources :votes, only: [:create, :update, :destroy]
+  resources :subscriptions, only: [:create, :destroy, :update]
   resources :reports do
     resources :comments, only: [:show, :create, :destroy]
   end

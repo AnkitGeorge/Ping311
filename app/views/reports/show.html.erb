@@ -17,6 +17,11 @@
         </li>
         <br>
       <% end %>
+ <!-- Button to subscribe -->
+ <%= form_for @subscription do |f| %>
+   <%= f.hidden_field :report_id %>
+   <%= f.submit "Subscribe" %>
+ <% end %>
   <!-- Button to vote -->
   <%= form_for @vote do |f| %>
     <%= f.hidden_field :report_id %>

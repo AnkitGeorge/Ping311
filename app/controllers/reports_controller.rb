@@ -37,6 +37,7 @@ class ReportsController < ApplicationController
     @comment = Comment.new(user: current_user, report: @report)
     @vote = @report.votes.build
     @nearbyholes = @report.nearbys( 1, unit: :km)
+    @subscription = @report.subscriptions.build
   end
 
   def edit
@@ -46,7 +47,13 @@ class ReportsController < ApplicationController
   def update
     @report = Report.find(params[:id])
 
-    if @report.update_attributes(report_params)
+    if
+      @report.update_attributes(report_params)
+
+      if @report.status_changed?
+        StatusMailer.status_email(@user).deliver_later
+      end
+
       redirect_to "/reports/#{@report.id}"
     else
       render :edit
@@ -58,8 +65,6 @@ class ReportsController < ApplicationController
     @report.destroy
       redirect_to reports_path
   end
-
-  # upvote_from user?
 
 private
   def report_params

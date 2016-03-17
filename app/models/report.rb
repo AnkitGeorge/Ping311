@@ -12,4 +12,13 @@ class Report < ActiveRecord::Base
   has_many :voting_users, through: :votes, :source => :user
 
 
+  has_many :subscriptions
+  has_many :subscribing_users, through: :subscriptions, :source => :user
+
+  def sub_emails(report)
+    emails = []
+    report.subscribing_users.each do |r|
+      r.email << emails
+    end
+  end
 end

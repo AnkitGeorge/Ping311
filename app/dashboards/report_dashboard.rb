@@ -17,10 +17,10 @@ class ReportDashboard < Administrate::BaseDashboard
     id: Field::Number,
     address: Field::String,
     description: Field::Text,
-    status: Field::Number,
+    status: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    image: Field::String,
+    image: Field::Image,
     latitude: Field::Number.with_options(decimals: 2),
     longitude: Field::Number.with_options(decimals: 2),
     vote_count: Field::Number,
@@ -32,56 +32,49 @@ class ReportDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
+    :address,
+    :description,
     :comments,
-    :commenting_users,
     :votes,
-    :voting_users,
   ]
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :comments,
-    :commenting_users,
-    :votes,
-    :voting_users,
-    :subscriptions,
-    :subscribing_users,
+    :image,
     :id,
     :address,
     :description,
     :status,
     :created_at,
     :updated_at,
-    :image,
     :latitude,
     :longitude,
-    :vote_count,
+    :comments,
+    :votes,
+    :subscriptions,
   ]
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
+    :image,
     :comments,
-    :commenting_users,
     :votes,
     :voting_users,
     :subscriptions,
-    :subscribing_users,
     :address,
     :description,
     :status,
-    :image,
     :latitude,
     :longitude,
-    :vote_count,
   ]
 
   # Overwrite this method to customize how reports are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(report)
-  #   "Report ##{report.id}"
-  # end
+  def display_resource(report)
+    "#{report.address}"
+  end
 end

@@ -11,7 +11,6 @@ class Report < ActiveRecord::Base
   has_many :votes
   has_many :voting_users, through: :votes, :source => :user
 
-
   has_many :subscriptions
   has_many :subscribing_users, through: :subscriptions, :source => :user
 
@@ -21,4 +20,5 @@ class Report < ActiveRecord::Base
       r.email << emails
     end
   end
+
 end

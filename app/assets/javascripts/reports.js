@@ -17,6 +17,19 @@ $(document).on("ready page:load", function(){
     })
 
   })
+
+  // Sort by subscriptions
+  $('#subscriptions-search').on('click', function(){
+
+    $.ajax({
+      url: '/reports',
+      method: 'get',
+      data: {subscription_count: true},
+      dataType: 'script',
+    })
+
+  })
+
   // Sort by status
   $('#status-search').on('click', function(){
 
@@ -28,7 +41,6 @@ $(document).on("ready page:load", function(){
     })
 
   })
-
 
 })
 

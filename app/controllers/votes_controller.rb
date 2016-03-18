@@ -1,5 +1,11 @@
 class VotesController < ApplicationController
   before_filter :require_login, except: [:show]
+  # after_action :update_vote, only: [:create]
+  #
+  # def update_vote
+  #   @report = Report.where(:id = vote_params[:report_id])
+  #   @report.update_attributes(report_params)
+  # end
 
   def new
     @vote = Vote.new

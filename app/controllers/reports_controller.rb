@@ -13,6 +13,8 @@ class ReportsController < ApplicationController
     #@status = 1
     @report.status = 1
     @report.vote_count = 0
+    @report.subscription_count = 0
+
     if @report.save
       redirect_to report_path(@report)
     else
@@ -23,10 +25,27 @@ class ReportsController < ApplicationController
   def index
     if params[:latitude] && params[:longitude]
       @reports = Report.near([params[:latitude], params[:longitude]], 1, unit: :km)
+
     elsif params[:vote_count]
-      @reports = Report.all.order(@report.vote_count=> :desc)
+
+      Report.all.each do |r|
+        r.vote_count = r.votes.count
+        r.save
+      end
+
+      @reports = Report.all.order(:vote_count => :desc)
+
+    elsif params[:subscription_count]
+
+      Report.all.each do |r|
+        r.subscription_count = r.subscriptions.count
+        r.save
+      end
+
+      @reports = Report.all.order(:subscription_count => :desc)
+
     elsif params[:status]
-      @reports = Report.all.order(:status => :asc)
+      @reports = Report.all.order(:status => :desc)
     else
       @reports = Report.all
     end
@@ -50,9 +69,7 @@ class ReportsController < ApplicationController
     if
       @report.update_attributes(report_params)
 
-      if @report.status_changed?
         StatusMailer.status_email(@user).deliver_later
-      end
 
       redirect_to "/reports/#{@report.id}"
     else

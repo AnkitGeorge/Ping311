@@ -34,8 +34,9 @@ class ReportDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :address,
     :description,
-    :comments,
+    :subscriptions,
     :votes,
+    :comments,
   ]
 
   # SHOW_PAGE_ATTRIBUTES
@@ -50,9 +51,9 @@ class ReportDashboard < Administrate::BaseDashboard
     :updated_at,
     :latitude,
     :longitude,
-    :comments,
-    :votes,
     :subscriptions,
+    :votes,
+    :comments,
   ]
 
   # FORM_ATTRIBUTES
@@ -60,10 +61,9 @@ class ReportDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :image,
-    :comments,
-    :votes,
-    :voting_users,
     :subscriptions,
+    :votes,
+    :comments,
     :address,
     :description,
     :status,

@@ -24,12 +24,9 @@
  <% end %>
 
  <h2>Subscriptions</h2>
- <% if @report.subscriptions.any? %>
+   <p> Subscriptions so far: <%= @report.subscriptions.count %></p>
+   <% @report.vote_count = @report.votes.count %>
    <% @report.subscription_count = @report.subscriptions.count %>
- <% else %>
-   <% @report.subscription_count = 0 %>
- <% end %>
-   <p> Subscriptions so far: <%= @report.subscription_count %></p>
 
 
   <!-- Button to vote -->
@@ -39,12 +36,7 @@
   <% end %>
   <!-- Votes -->
   <h2>Votes</h2>
-  <% if @report.votes.any? %>
-    <% @report.vote_count = @report.votes.count %>
-  <% else %>
-    <% @report.vote_count = 0 %>
-  <% end %>
-    <p> Votes so far: <%= @report.vote_count %></p>
+    <p> Votes so far: <%= @report.votes.count %></p>
 
   <!-- Comments -->
 

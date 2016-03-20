@@ -54,3 +54,49 @@
  <%= javascript_tag do %>
    window.nearbys = <%= raw @nearbyholes.map{|nr| { lat: nr.latitude, lng: nr.longitude } }.to_json %>
  <% end %>
+
+<script type="text/javascript">
+var customIcon = "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
+var mapPlaceholder = $('#show_map');
+var latlng = {lat: mapPlaceholder.data('latitude'), lng: mapPlaceholder.data('longitude')}
+var mapOptions = {
+  zoom: 18,
+  center: latlng,
+  panControl: false,
+  panControlOptions: {
+    position: google.maps.ControlPosition.BOTTOM_LEFT
+  },
+  zoomControl: true,
+  zoomControlOptions: {
+    style: google.maps.ZoomControlStyle.LARGE,
+    position: google.maps.ControlPosition.RIGHT_CENTER
+  },
+  scaleControl: false
+
+};
+var map = new google.maps.Map(document.getElementById("show_map"), mapOptions);
+
+    var marker;
+
+    function createMarker(coords, map) {
+      marker = new google.maps.Marker({
+        position: coords,
+        map: map
+      });
+    }
+
+    createMarker(latlng, map);
+
+    // Nearby markers
+  if (window.nearbys) {
+    nearbys.forEach(function(coord) {
+      new google.maps.Marker({
+        position: { lat: parseFloat(coord.lat), lng: parseFloat(coord.lng) },
+        map: map,
+        title: "Nearby_potholes",
+        icon: customIcon
+      });
+    });
+  }
+
+</script>

@@ -18,28 +18,26 @@ gem 'sorcery'
 gem "administrate", "~> 0.1.4"
 # Geocoder for geolocation
 gem 'geocoder'
-group :development, :test do
-  gem 'byebug'
-end
+
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
-end
-gem 'bootstrap-sass'
-gem 'pg'
-group :development do
   gem 'letter_opener'
   gem 'better_errors'
   gem 'quiet_assets'
   gem 'rails_layout'
 end
+
 group :development, :test do
+  gem 'byebug'
   gem 'pry-rails'
   gem 'pry-rescue'
 end
 group :production do
   gem 'rails_12factor'
-  gem 'puma'
+  # gem 'puma'
 end
 
 gem 'figaro'
+gem 'bootstrap-sass'
+gem 'pg'

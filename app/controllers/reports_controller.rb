@@ -45,7 +45,8 @@ class ReportsController < ApplicationController
       @reports = Report.all.order(:subscription_count => :desc)
 
     elsif params[:status]
-      @reports = Report.all.order(:status => :desc)
+      @reports = Report.all.order(:status => :asc)
+
     else
       @reports = Report.all
     end

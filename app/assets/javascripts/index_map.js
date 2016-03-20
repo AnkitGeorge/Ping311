@@ -53,12 +53,27 @@ $(document).on('ready page:load', function() {
 
   $('#current_location').on("click", function() {
 
-    map.setCenter({ lat: userCords.latitude, lng: userCords.longitude});
+
+    var current_coordinates = { lat: userCords.latitude, lng: userCords.longitude};
+
+    map.setCenter(current_coordinates);
+
+    var marker;
+
+    function createMarker(coords, map) {
+      marker = new google.maps.Marker({
+        position: coords,
+        map: map
+      });
+    }
+
+    createMarker(current_coordinates, map);
+  });
     // var marker = new google.maps.Marker({
     //    position: (userCords.latitude, userCords.longitude),
     //    map: map,
     //    title: 'Current_pothole'
-      });
+    //   });
 
       // Try W3C Geolocation (Preferred)
       // var initialLocation;
@@ -90,8 +105,6 @@ $(document).on('ready page:load', function() {
       //     initialLocation = siberia;
       //   }
       // }
-
-  });
 });
 
 

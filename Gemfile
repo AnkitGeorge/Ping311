@@ -8,6 +8,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 #Carrier Wave for image uploads
 gem 'carrierwave'
+# Cloudinary for image hosting
+gem 'cloudinary'
 # Mini Magick for processing images
 gem 'mini_magick'
 # Sorcery for authentication

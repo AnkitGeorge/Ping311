@@ -4,11 +4,26 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
+  include Cloudinary::CarrierWave
   include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
   storage :file
   # storage :fog
+  process :convert => 'png'
+  process :tags => ['pothole_picture']
+
+
+  # version :standard do
+  #   process :eager => true
+  #   process :resize_to_fill => [300, 600, :north]
+  # end
+
+  # version :thumb do
+  #   process :eager => true
+  #   resize_to_fit(150, 300)
+  # end
+
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
@@ -16,7 +31,6 @@ class ImageUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-  process :resize_to_fit => [200,300]
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
   #   # For Rails 3.1+ asset pipeline compatibility:
@@ -47,9 +61,9 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   "#{model.nicely_formatted_filename}.png"
   # end
 
-  # def extension_white_list
-  #   %w(jpg jpeg gif png bmp tif tiff)
-  # end
+  def extension_white_list
+    %w(jpg jpeg gif png bmp tif tiff)
+  end
   #
  #  private
  #  def mogrify(options = {})

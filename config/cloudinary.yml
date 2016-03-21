@@ -1,0 +1,16 @@
+development:
+  cloud_name: dr6p3vahn
+  api_key: '495176377138896'
+  api_secret: wVUcLzN631WB6wAGWzT9-dW0UJQ
+production:
+  cloud_name: dr6p3vahn
+  api_key: '495176377138896'
+  api_secret: wVUcLzN631WB6wAGWzT9-dW0UJQ
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: dr6p3vahn
+  api_key: '495176377138896'
+  api_secret: wVUcLzN631WB6wAGWzT9-dW0UJQ
+  enhance_image_tag: true
+  static_image_support: false

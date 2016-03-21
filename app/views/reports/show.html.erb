@@ -1,13 +1,13 @@
 <div id="show_map" data-latitude="<%= @report.latitude %>" data-longitude="<%= @report.longitude %>"></div>
-<br>
-<br>
-<div id="show_img"><%= image_tag(@report.image) %></div>
+  <br>
+  <br>
+<div id="show_img"><% unless @report.image_url.nil? %> <%= image_tag @report.image_url %><% end %></div>
 <h2><%= @report.address %></h2>
-<br>
+  <br>
 <h4><%= @report.description %></h4>
-<br>
+  <br>
 <h4>Status: <%= statusName(@report.status) %></h4>
-<br>
+  <br>
 <h4>Other pothole reports near this location</h4>
       <% @nearbyholes.each do |h| %>
         <li>

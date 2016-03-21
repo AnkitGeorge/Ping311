@@ -28,7 +28,7 @@ $(document).on('ready page:load', function() {
 
   //map options
   var mapOptions = {
-    zoom: 14,
+    zoom: 10,
     center: new google.maps.LatLng(43.7184038, -79.47),
     panControl: false,
     panControlOptions: {
@@ -57,6 +57,7 @@ $(document).on('ready page:load', function() {
     var current_coordinates = { lat: userCords.latitude, lng: userCords.longitude};
 
     map.setCenter(current_coordinates);
+    map.setZoom(17);
 
     var marker;
 

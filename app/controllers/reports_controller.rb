@@ -70,8 +70,6 @@ class ReportsController < ApplicationController
     if
       @report.update_attributes(report_params)
 
-        StatusMailer.status_email(@user).deliver_later
-
       redirect_to "/reports/#{@report.id}"
     else
       render :edit
@@ -86,6 +84,6 @@ class ReportsController < ApplicationController
 
 private
   def report_params
-    params.require(:report).permit(:id, :description, :address, :status, :image)
+    params.require(:report).permit(:id, :description, :address, :status)
   end
 end

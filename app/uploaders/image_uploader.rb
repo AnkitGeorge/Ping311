@@ -8,28 +8,31 @@ class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
+  # storage :file
   # storage :fog
   process :convert => 'png'
   process :tags => ['pothole_picture']
-
+  process :resize_to_fill => [600, 400, :north]
 
   # version :standard do
-  #   process :eager => true
-  #   process :resize_to_fill => [300, 600, :north]
+    # process :eager => true
+    # process :resize_to_fill => [600, 400, :north]
   # end
 
-  # version :thumb do
-  #   process :eager => true
-  #   resize_to_fit(150, 300)
-  # end
+  version :thumb do
+    process :eager => true
+    resize_to_fit(300, 400)
+  end
 
 
+  def extension_white_list
+    %w(jpg jpeg gif png bmp tif tiff)
+  end
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
-  def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-  end
+  # def store_dir
+  #   "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+  # end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
@@ -61,9 +64,6 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   "#{model.nicely_formatted_filename}.png"
   # end
 
-  def extension_white_list
-    %w(jpg jpeg gif png bmp tif tiff)
-  end
   #
  #  private
  #  def mogrify(options = {})

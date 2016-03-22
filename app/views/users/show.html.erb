@@ -10,7 +10,7 @@
     <% if @user.subscribed_reports.any? %>
       <% @user.subscribed_reports.each do |r|  %>
       <li>
-        <p><%= r.address %></p>
+        <p><%= link_to "#{r.address}", report_path(r) %></p>
       </li>
       <br>
       <% end %>
@@ -31,7 +31,7 @@
     <% if @user.voted_reports.any? %>
       <% @user.voted_reports.each do |r|  %>
       <li>
-        <p><%= r.address %></p>
+        <p><%= link_to "#{r.address}", report_path(r) %></p>
       </li>
       <br>
       <% end %>

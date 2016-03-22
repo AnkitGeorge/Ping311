@@ -84,6 +84,6 @@ class ReportsController < ApplicationController
 
 private
   def report_params
-    params.require(:report).permit(:id, :description, :address, :status)
+    params.require(:report).permit(:id, :description, :address, :status, :image)
   end
 end

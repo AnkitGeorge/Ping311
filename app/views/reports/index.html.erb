@@ -19,6 +19,11 @@
 
   <br>
   <br>
+
+  <%= javascript_tag do %>
+    window.nearbys = <%= raw Report.all.map{|nr| { lat: nr.latitude, lng: nr.longitude } }.to_json %>
+  <% end %>
+
   <section id="report-list" >
     <%= render @reports %>
   </section>

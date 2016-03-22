@@ -29,7 +29,7 @@ $(document).on('ready page:load', function() {
 
   //map options
   var mapOptions = {
-    zoom: 10,
+    zoom: 11,
     center: new google.maps.LatLng(43.7184038, -79.47),
     panControl: false,
     panControlOptions: {
@@ -52,6 +52,18 @@ $(document).on('ready page:load', function() {
   //Fire up Google maps and place inside the map div
   map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
+  //Code below loads markers for all pothole reports in the Report model
+  if (window.nearbys) {
+    nearbys.forEach(function(coord) {
+      new google.maps.Marker({
+        position: { lat: parseFloat(coord.lat), lng: parseFloat(coord.lng) },
+        map: map,
+        title: "Nearby_potholes",
+        icon: customIcon
+      });
+    });
+  }
+
   $('#nearby-search').on("click", function() {
     var marker;
     var current_coordinates = { lat: userCords.latitude, lng: userCords.longitude};
@@ -66,19 +78,18 @@ $(document).on('ready page:load', function() {
       });
     }
 
-    createMarker(current_coordinates, map);
 
-    // Creates markers but only after loading the show page of a map.
-    if (window.nearbys) {
-      nearbys.forEach(function(coord) {
-        new google.maps.Marker({
-          position: { lat: parseFloat(coord.lat), lng: parseFloat(coord.lng) },
-          map: map,
-          title: "Nearby_potholes",
-          icon: customIcon
-        });
-      });
-    }
+    createMarker(current_coordinates, map);
+    // if (window.nearbys) {
+    //   nearbys.forEach(function(coord) {
+    //     new google.maps.Marker({
+    //       position: { lat: parseFloat(coord.lat), lng: parseFloat(coord.lng) },
+    //       map: map,
+    //       title: "Nearby_potholes",
+    //       icon: customIcon
+    //     });
+    //   });
+    // }
 });
     // var marker = new google.maps.Marker({
     //    position: (userCords.latitude, userCords.longitude),

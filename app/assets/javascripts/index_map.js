@@ -5,7 +5,6 @@ $(document).on('ready page:load', function() {
   var infoWindow = null;
   var customIcon = "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
 
-
 //Start geolocation
 
   if (navigator.geolocation) {
@@ -53,16 +52,13 @@ $(document).on('ready page:load', function() {
   //Fire up Google maps and place inside the map div
   map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
-  $('#current_location').on("click", function() {
-
-
+  $('#nearby-search').on("click", function() {
+    var marker;
     var current_coordinates = { lat: userCords.latitude, lng: userCords.longitude};
 
     map.setCenter(current_coordinates);
     map.setZoom(17);
-
-    var marker;
-
+    // Create a marker after hitting current_loction button
     function createMarker(coords, map) {
       marker = new google.maps.Marker({
         position: coords,
@@ -71,7 +67,19 @@ $(document).on('ready page:load', function() {
     }
 
     createMarker(current_coordinates, map);
-  });
+
+    // Creates markers but only after loading the show page of a map.
+    if (window.nearbys) {
+      nearbys.forEach(function(coord) {
+        new google.maps.Marker({
+          position: { lat: parseFloat(coord.lat), lng: parseFloat(coord.lng) },
+          map: map,
+          title: "Nearby_potholes",
+          icon: customIcon
+        });
+      });
+    }
+});
     // var marker = new google.maps.Marker({
     //    position: (userCords.latitude, userCords.longitude),
     //    map: map,

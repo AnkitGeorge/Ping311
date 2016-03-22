@@ -8,7 +8,10 @@
   <br>
 <h4>Status: <%= statusName(@report.status) %></h4>
   <br>
-<h4>Other pothole reports near this location</h4>
+
+<div class="show_report_block">
+  <h4>Other pothole reports near this location</h4>
+  <br>
       <% @nearbyholes.each do |h| %>
         <li>
           <p><%= h.address %></p>
@@ -17,26 +20,34 @@
         </li>
         <br>
       <% end %>
- <!-- Button to subscribe -->
- <%= form_for @subscription do |f| %>
-   <%= f.hidden_field :report_id %>
-   <%= f.submit "Subscribe" %>
- <% end %>
+</div>
 
- <h2>Subscriptions</h2>
+  <h2>Subscriptions</h2>
    <p> Subscriptions so far: <%= @report.subscriptions.count %></p>
    <% @report.vote_count = @report.votes.count %>
    <% @report.subscription_count = @report.subscriptions.count %>
 
+   <!-- Button to subscribe -->
+
+  <%= form_for @subscription do |f| %>
+    <%= f.hidden_field :report_id %>
+    <%= f.submit "Subscribe" %>
+  <% end %>
+
+  <br
+
+  <!-- Votes -->
+  <h2>Votes</h2>
+    <p> Votes so far: <%= @report.votes.count %></p>
 
   <!-- Button to vote -->
   <%= form_for @vote do |f| %>
     <%= f.hidden_field :report_id %>
     <%= f.submit "Submit Vote" %>
   <% end %>
-  <!-- Votes -->
-  <h2>Votes</h2>
-    <p> Votes so far: <%= @report.votes.count %></p>
+
+  <br>
+
 
   <!-- Comments -->
 
@@ -51,6 +62,7 @@
 
   <!-- Partial render for each report -->
  <%= render partial: 'comments/form' %>
+
 
  <%= javascript_tag do %>
    window.nearbys = <%= raw @nearbyholes.map{|nr| { lat: nr.latitude, lng: nr.longitude } }.to_json %>

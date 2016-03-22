@@ -1,11 +1,43 @@
 <h2>User Information</h2>
+<br>
+<h4>Username : <%= @user.username %></h4>
+<h4>Email : <%= @user.email %></h4>
+<br>
+<div class="user_block">
 
-<h3>Username : <%= @user.username %></h3>
-<h3>Email : <%= @user.email %></h3>
+  <h4>List of subscribed reports</h4>
 
-<h3>List of followed reports</h3>
-<ul>
-  <p>
-    ...
-  </p>
-</ul>
+    <% if @user.subscribed_reports.any? %>
+      <% @user.subscribed_reports.each do |r|  %>
+      <li>
+        <p><%= r.address %></p>
+      </li>
+      <br>
+      <% end %>
+
+    <% else %>
+      <p>No subscribed reports.</p>
+    <% end %>
+
+</div>
+
+<br>
+<br>
+
+<div class="user_block">
+
+  <h4>List of voted reports</h4>
+
+    <% if @user.voted_reports.any? %>
+      <% @user.voted_reports.each do |r|  %>
+      <li>
+        <p><%= r.address %></p>
+      </li>
+      <br>
+      <% end %>
+
+    <% else %>
+      <p>No voted reports.</p>
+    <% end %>
+
+</div>

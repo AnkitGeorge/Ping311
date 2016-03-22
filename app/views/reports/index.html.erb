@@ -1,12 +1,28 @@
-<div id="map"></div>
-<h1>Listing of all the reports</h1>
-<br>
-<%= button_tag "Sort by location", id: "nearby-search" %>
-<%= button_tag "Sort by votes", id: "votes-search" %>
-<%= button_tag "Sort by subcribers", id: "subscriptions-search" %>
-<%= button_tag "Sort by status", id: "status-search" %>
-<br>
-<br>
-<section id="report-list" >
-  <%= render @reports %>
-</section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+</head>
+
+<body>
+
+  <div id="map"></div>
+
+  <br>
+
+  <div class="sort_by">Sort reports by:
+    <%= button_tag "Location", id: "nearby-search" %>
+    <%= button_tag "Votes", id: "votes-search" %>
+    <%= button_tag "Subscribers", id: "subscriptions-search" %>
+    <%= button_tag "Status", id: "status-search" %>
+  </div>
+
+  <br>
+  <br>
+  <section id="report-list" >
+    <%= render @reports %>
+  </section>
+</body>
+
+
+</html>

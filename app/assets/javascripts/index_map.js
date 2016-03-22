@@ -3,6 +3,8 @@ $(document).on('ready page:load', function() {
   var userCords;
   var pos;
   var infoWindow = null;
+  var customIcon = "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
+
 
 //Start geolocation
 

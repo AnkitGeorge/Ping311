@@ -23,8 +23,9 @@ class ReportsController < ApplicationController
   end
 
   def index
+
     if params[:latitude] && params[:longitude]
-      @reports = Report.near([params[:latitude], params[:longitude]], 1, unit: :km)
+      @reports = Report.near([params[:latitude], params[:longitude]], 30, unit: :km)
 
     elsif params[:vote_count]
 
@@ -84,6 +85,6 @@ class ReportsController < ApplicationController
 
 private
   def report_params
-    params.require(:report).permit(:id, :description, :address, :status)
+    params.require(:report).permit(:id, :description, :address, :status, :image)
   end
 end

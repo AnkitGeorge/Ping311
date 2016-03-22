@@ -1,12 +1,21 @@
 <ul>
-    <h4><li><%= link_to image_tag(report.image_url(:thumb)), report_path(report)%></li></h4>
+  <div class="report_block">
+    <br>
+    <br>
+
+    <% unless report.image_url.nil? %>
+    <h4><li><%= link_to image_tag(report.image_url(:thumb)), report_path(report), class: 'index_image' %></li></h4>
+    <% end %>
+
     <h4><li>Address: <%= link_to "#{report.address}", report_path(report) %></h4></p>
+    <br>
     <p><li>Description: <%= report.description  %></li></p>
     <p><li>Status: <%= statusName(report.status) %></li></p>
-    <h4>Votes</h4>
-    <p><%= report.votes.count %></p>
-    <h4>Subscriptions</h4>
-    <p><%= report.subscriptions.count %></p>
     <br>
+    <h4>Votes: <%= report.votes.count %></h4>
+    <h4>Subscriptions: <%= report.subscriptions.count %></h4>
+    <br>
+    <br>
+  </div>
     <br>
 </ul>
